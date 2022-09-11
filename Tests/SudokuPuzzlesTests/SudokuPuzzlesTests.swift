@@ -3,9 +3,14 @@ import XCTest
 
 final class SudokuPuzzlesTests: XCTestCase {
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(SudokuPuzzles().text, "Hello, World!")
+        XCTAssertNotNil(SudokuPuzzles.all)
+        XCTAssertNotNil(SudokuPuzzles.test)
+        
+        for level in PuzzleDifficultyLevel.allCases {
+            let puzzles = SudokuPuzzles.test[level]
+            for _ in 0...puzzles.count {
+                XCTAssertNotNil(puzzles.next)
+            }
+        }
     }
 }
