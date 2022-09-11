@@ -24,7 +24,7 @@ public class PuzzlesFile {
     }
     
     private func loadPuzzleStrings() -> [String] {
-        Bundle.module.decode([String].self, from: "Resources/\(fileName)")
+        Bundle.module.decode([String].self, from: "\(fileName)")
     }
     
     private func convert(_ puzzleStrings: [String]) -> [[Int]] {

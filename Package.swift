@@ -5,6 +5,10 @@ import PackageDescription
 
 let package = Package(
     name: "SudokuPuzzles",
+    platforms: [
+        .iOS("12.0"),   // changed here
+        .macOS("10.10")
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -22,13 +26,13 @@ let package = Package(
             name: "SudokuPuzzles",
             dependencies: [],
             resources: [
-                .copy("Resources")
+                .copy("puzzles")
             ]),
         .testTarget(
             name: "SudokuPuzzlesTests",
             dependencies: ["SudokuPuzzles"],
             resources: [
-                .copy("Resources")
+                .copy("puzzles")
             ])
     ]
 )

@@ -1,6 +1,6 @@
 import Foundation
 
-public enum PuzzleDifficultyLevel: Int, CaseIterable {
+public enum PuzzleDifficultyLevel: String, CaseIterable {
 
     case easy, medium, hard, evil
 
