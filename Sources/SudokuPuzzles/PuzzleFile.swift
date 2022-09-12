@@ -1,13 +1,17 @@
 import Foundation
 
 public class PuzzlesFile {
-    let fileName: String
+    private let fileName: String
     private lazy var puzzles: [[Int]] = loadPuzzles()
 
-    init(fileName: String) {
+    internal init(fileName: String) {
         self.fileName = fileName
     }
     
+    public var count: Int { puzzles.count }
+
+    public var first: [Int] { puzzles[0] }
+
     public var next: [Int] {
         var index = UserDefaults.standard.integer(forKey: fileName)
         if index >= count {
@@ -16,22 +20,22 @@ public class PuzzlesFile {
         UserDefaults.standard.set(index + 1, forKey: fileName)
         return puzzles[index]
     }
-    
-    public var count: Int { puzzles.count }
-    
-    private func loadPuzzles() -> [[Int]] {
+}
+
+private extension PuzzlesFile {
+    func loadPuzzles() -> [[Int]] {
         convert(loadPuzzleStrings())
     }
-    
-    private func loadPuzzleStrings() -> [String] {
+
+    func loadPuzzleStrings() -> [String] {
         Bundle.module.decode([String].self, from: "\(fileName)")
     }
-    
-    private func convert(_ puzzleStrings: [String]) -> [[Int]] {
+
+    func convert(_ puzzleStrings: [String]) -> [[Int]] {
         puzzleStrings.map { stringToPuzzle($0) }
     }
-    
-    private func stringToPuzzle(_ string: String) -> [Int] {
+
+    func stringToPuzzle(_ string: String) -> [Int] {
         string.split(separator: ",").map { String($0) }.map { Int($0)! }
     }
 }
