@@ -1,4 +1,5 @@
-import SwiftUI
+import Foundation
+import SudokuModels
 
 public struct SudokuPuzzles {
     public static let all = Puzzles(files: PuzzleDifficultyLevel.allCases.map { ("puzzles/puzzles_\($0.rawValue).json", $0) })

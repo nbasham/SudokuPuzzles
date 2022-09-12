@@ -2,7 +2,6 @@ import XCTest
 @testable import SudokuPuzzles
 
 final class SudokuPuzzlesTests: XCTestCase {
-
     func testExample() throws {
         XCTAssertNotNil(SudokuPuzzles.all)
         XCTAssertNotNil(SudokuPuzzles.test)
